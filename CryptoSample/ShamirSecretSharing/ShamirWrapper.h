@@ -14,5 +14,6 @@
 
 
 - (void)testShamir;
+- (void)testModular;
 
 @end

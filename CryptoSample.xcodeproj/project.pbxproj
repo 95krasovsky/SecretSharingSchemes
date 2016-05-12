@@ -10,6 +10,7 @@
 		84494D221CE2495800EF7ADF /* ShamirWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84494D211CE2495800EF7ADF /* ShamirWrapper.mm */; };
 		84494ECD1CE2606E00EF7ADF /* ntl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84494ECC1CE2606E00EF7ADF /* ntl.a */; };
 		84494ED11CE29A0E00EF7ADF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84494ECF1CE29A0E00EF7ADF /* base64.cpp */; };
+		84494ED51CE3D20400EF7ADF /* ModularSSScheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84494ED31CE3D20400EF7ADF /* ModularSSScheme.cpp */; };
 		846841AD1CE236EB003CF0E4 /* ShamirSSScheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846841AB1CE236EB003CF0E4 /* ShamirSSScheme.cpp */; };
 		84AD47351CBC42CD002D5D30 /* GMEllipticCurveCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AD47321CBC42CD002D5D30 /* GMEllipticCurveCrypto.m */; };
 		84AD47361CBC42CD002D5D30 /* GMEllipticCurveCrypto+hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AD47341CBC42CD002D5D30 /* GMEllipticCurveCrypto+hash.m */; };
@@ -28,6 +29,8 @@
 		84494ECC1CE2606E00EF7ADF /* ntl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = ntl.a; path = "../../Downloads/ntl-9.8.1/src/ntl.a"; sourceTree = "<group>"; };
 		84494ECF1CE29A0E00EF7ADF /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
 		84494ED01CE29A0E00EF7ADF /* base64.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base64.hpp; sourceTree = "<group>"; };
+		84494ED31CE3D20400EF7ADF /* ModularSSScheme.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModularSSScheme.cpp; path = ModularSecretSharing/ModularSSScheme.cpp; sourceTree = "<group>"; };
+		84494ED41CE3D20400EF7ADF /* ModularSSScheme.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModularSSScheme.hpp; path = ModularSecretSharing/ModularSSScheme.hpp; sourceTree = "<group>"; };
 		846841AB1CE236EB003CF0E4 /* ShamirSSScheme.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShamirSSScheme.cpp; path = ShamirSecretSharing/ShamirSSScheme.cpp; sourceTree = "<group>"; };
 		846841AC1CE236EB003CF0E4 /* ShamirSSScheme.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShamirSSScheme.hpp; path = ShamirSecretSharing/ShamirSSScheme.hpp; sourceTree = "<group>"; };
 		84AD47311CBC42CD002D5D30 /* GMEllipticCurveCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMEllipticCurveCrypto.h; sourceTree = "<group>"; };
@@ -59,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84494ED21CE3D19E00EF7ADF /* ModularSecretSharing */ = {
+			isa = PBXGroup;
+			children = (
+				84494ED31CE3D20400EF7ADF /* ModularSSScheme.cpp */,
+				84494ED41CE3D20400EF7ADF /* ModularSSScheme.hpp */,
+			);
+			name = ModularSecretSharing;
+			sourceTree = "<group>";
+		};
 		846841AA1CE2368B003CF0E4 /* ShamirSecretSharing */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +116,7 @@
 		F2569FE81CBBDCDB0070882D /* CryptoSample */ = {
 			isa = PBXGroup;
 			children = (
+				84494ED21CE3D19E00EF7ADF /* ModularSecretSharing */,
 				846841AA1CE2368B003CF0E4 /* ShamirSecretSharing */,
 				84AD47301CBC42BE002D5D30 /* GMEllipticCurveCrypto */,
 				F2569FEC1CBBDCDB0070882D /* AppDelegate.h */,
@@ -206,6 +219,7 @@
 				F2569FEB1CBBDCDB0070882D /* main.m in Sources */,
 				84AD47381CBC42D6002D5D30 /* test.m in Sources */,
 				84494D221CE2495800EF7ADF /* ShamirWrapper.mm in Sources */,
+				84494ED51CE3D20400EF7ADF /* ModularSSScheme.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

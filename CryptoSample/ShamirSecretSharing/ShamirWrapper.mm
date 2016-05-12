@@ -9,8 +9,13 @@
 #import "ShamirWrapper.h"
 
 #include "ShamirSSScheme.hpp"
+#include "ModularSSScheme.hpp"
+
 #include "base64.hpp"
 #include <string>
+#include <NTL//ZZX.h>
+#include <NTL//ZZ.h>
+#include <NTL//GF2X.h>
 
 #import "GMEllipticCurveCrypto.h"
 #import "GMEllipticCurveCrypto+hash.h"
@@ -31,7 +36,71 @@ using namespace NTL;
     return sharedInstance;
 }
 
+- (void)testModular{
+    for (int i = 0; i < 4; i++) {
+        
+        GMEllipticCurve curve = GMEllipticCurveNone;
+        NSString *curveName = nil;
+        GMEllipticCurveCrypto *crypto;
+        switch (i) {
+            case 0:
+                curve = GMEllipticCurveSecp128r1;
+                curveName = @"GMEllipticCurveSecp128r1";
+                break;
+                
+            case 1:
+                curve = GMEllipticCurveSecp192r1;
+                curveName = @"GMEllipticCurveSecp192r1";
+                break;
+                
+            case 2:
+                curve = GMEllipticCurveSecp256r1;
+                curveName = @"GMEllipticCurveSecp256r1";
+                break;
+                
+            case 3:
+                curve = GMEllipticCurveSecp384r1;
+                curveName = @"GMEllipticCurveSecp384r1";
+                break;
+        }
+        
+        NSLog(@"Testing: %@", curveName);
+        
+        // Generate a key pair
+        // NSLog(@"  Generate Key Pair");
+        crypto = [GMEllipticCurveCrypto generateKeyPairForCurve:curve];
+        
+        //        NSLog(@"    Public Key:  %@", crypto.publicKeyBase64);
+               // NSLog(@"    Private Key: %@", crypto.privateKey);
+               // NSLog(@"    Private Key64: %lu", crypto.privateKeyBase64.length);
+
+        ZZ z = ZZFromBytes((unsigned char *)[crypto.privateKey bytes], [crypto.privateKey length]);
+        ModularSSScheme shamir(3,3, z);
+        ModularSSScheme::BigPolyVec peopleSecrets;
+        ModularSSScheme::BigPolyVec openKeys;
+
+        peopleSecrets = shamir.GetSecretParts();
+        openKeys = shamir.GetOpenKeys();
+
+        int nr = 3;
+        
+        ModularSSScheme::BigPolyVec keys(nr+1);
+        ModularSSScheme::BigPolyVec secrets(nr);
+        keys[0] = openKeys[0];
+
+        for (int i =0; i < nr; i++){
+            secrets[i] = peopleSecrets[i];
+            keys[i+1] = openKeys[i+1];
+        }
+        
+        shamir.AccesSecret(3, keys, secrets);
+    }
+    
+}
+
+
 - (void)testShamir {
+    
     
     for (int i = 0; i < 4; i++) {
         
