@@ -15,5 +15,6 @@
 
 - (void)testShamir;
 - (void)testModular;
-
+- (void)testModularManual;
+- (void)testAndCompare;
 @end

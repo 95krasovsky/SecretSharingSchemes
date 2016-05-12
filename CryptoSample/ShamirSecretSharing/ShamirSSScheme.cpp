@@ -11,19 +11,11 @@
 using namespace std;
 using namespace NTL;
 
-ShamirSSScheme::ShamirSSScheme(UInt n, UInt k) : N(n), K(k), sharingParts(n), polynom(k)
-{
-    primeNr = GenPrime_ZZ(4, 100);
-    cout << "primeNr " << primeNr << '\n';
-    
-    GeneratePolynom();
-    CalculateSharingParts();
-}
 
 ShamirSSScheme::ShamirSSScheme(UInt n, UInt k, BigNumber sec) : N(n), K(k), sharingParts(n), polynom(k)
 {
     primeNr = NextPrime(sec);
-    cout << "primeNr " << primeNr << '\n';
+   // cout << "primeNr " << primeNr << '\n';
     polynom[0] = sec;
     GeneratePolynom();
     CalculateSharingParts();
@@ -39,6 +31,8 @@ ShamirSSScheme::~ShamirSSScheme(void)
 // polynom[0] = the secret
 void ShamirSSScheme::GeneratePolynom()
 {
+    cout << "Shamir SSS generating parameters..."<<endl;
+
 //    cout << "secret: pol[0] = " << polynom[0] << '\n';
 
     for (UInt i = 1; i < K; i++)    {
@@ -58,7 +52,7 @@ void ShamirSSScheme::CalculateSharingParts()
             NTL::PowerMod(aux, NTL::to_ZZ(i + 1), j, primeNr);
             sharingParts[i] = (sharingParts[i] + polynom[j] * aux) % primeNr;
         }
-        cout << "share[" << i << "] = " << sharingParts[i] << '\n';
+        //cout << "share[" << i << "] = " << sharingParts[i] << '\n';
     }
 }
 
@@ -69,7 +63,7 @@ const ShamirSSScheme::BigNrVec& ShamirSSScheme::GetSecretParts()
 
 bool ShamirSSScheme::AccesSecret(const std::vector<UInt>& vPeople, const ShamirSSScheme::BigNrVec &vPeopleSecrets)
 {
-    cout << "\nTrying to acces the secret...\n";
+    cout << "Trying to acces the secret...\n";
     UInt peopleNr = (UInt)vPeople.size();
     if (peopleNr != vPeopleSecrets.size())
     {
@@ -94,11 +88,11 @@ bool ShamirSSScheme::AccesSecret(const std::vector<UInt>& vPeople, const ShamirS
         secret = (secret + vPeopleSecrets[i] * aux1) % primeNr;
     }
     
-    cout << "Secret: " << polynom[0] << '\n';
-    cout << "Secret discovered: " << secret << '\n';
+//    cout << "Secret: " << polynom[0] << '\n';
+//    cout << "Secret discovered: " << secret << '\n';
     if (secret == polynom[0])
     {
-        cout << "Secret Succefuly accesed\n";
+        cout << "Secret Succefuly accesed"<<endl;
         return true;
     }
     

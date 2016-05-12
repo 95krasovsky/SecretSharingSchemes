@@ -23,7 +23,6 @@ public:
     typedef NTL::ZZ BigNumber;
     typedef std::vector<BigNumber> BigNrVec;
 public:
-    ShamirSSScheme(UInt n, UInt k);
     ShamirSSScheme(UInt n, UInt k, BigNumber sec);
 
 public:
