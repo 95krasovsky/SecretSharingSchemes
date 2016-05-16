@@ -213,14 +213,14 @@ using namespace NTL;
             crypto = [GMEllipticCurveCrypto generateKeyPairForCurve:curve];
             for (int io = 0; io < 2; io++){ // generating/accessing
                 for (int N = 2; N <= 50; N += 8){
-                    int pitch = ceil((N - 2)/10.0);
+                    int pitch = ceil((N - 2)/20.0);
                     if (pitch <= 0) pitch = 1;
                     cout << ((i == 0) ? "128\t" : "256\t") << ((io == 0) ? "generating\t" : "accessing\t") << "N = " << N << endl;
                     cout << "K:\t" << "shamir time:\t" << "modular time:" << endl;
 
                     for (int K = 2; K <= N; K += pitch){
                         
-                        NSTimeInterval shamirGeneratingInterval, shamirAccessingInterval, modularGeneratingInterval, modularAccessingInterval;
+                        NSTimeInterval shamirGeneratingInterval, sha	mirAccessingInterval, modularGeneratingInterval, modularAccessingInterval;
                         
                         for (int ii = 0; ii < repeat; ii++){
 
