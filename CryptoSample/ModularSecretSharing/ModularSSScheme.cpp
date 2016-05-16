@@ -100,8 +100,8 @@ void ModularSSScheme::GenerateParameters()
 //
 //        cout << "key[" << i << "] = " << openKeys[i] << '\n';
 //    }
-    cout<<"secret: "<<secret<< " secret size: "<<secretLength<<endl;
-    cout << "Modular SSS generating parameters..."<<endl;
+    //cout<<"secret: "<<secret<< " secret size: "<<secretLength<<endl;
+    //cout << "Modular SSS generating parameters..."<<endl;
 
     for (UInt i = 0; i < N + 1; i++)    {
         GF2X m;
@@ -158,7 +158,7 @@ void ModularSSScheme::CalculateSharingParts()
 bool ModularSSScheme::AccesSecret(int peopleNum, const BigPolyVec &keys, const BigPolyVec &secrets)
 
 {
-    cout << "Trying to acces the secret...\n";
+    //cout << "Trying to acces the secret...\n";
     int j = 0;
     GF2X C = secrets[0];
     GF2X g = GF2X(secretLength, 1) + keys[0 + 1];
@@ -193,7 +193,7 @@ bool ModularSSScheme::AccesSecret(int peopleNum, const BigPolyVec &keys, const B
 
     if (S == sInitial)
     {
-        cout << "Secret Succefuly accesed!"<<endl;
+        //cout << "Secret Succefuly accesed!"<<endl;
         return true;
     }
     

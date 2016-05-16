@@ -31,7 +31,7 @@ ShamirSSScheme::~ShamirSSScheme(void)
 // polynom[0] = the secret
 void ShamirSSScheme::GeneratePolynom()
 {
-    cout << "Shamir SSS generating parameters..."<<endl;
+    //cout << "Shamir SSS generating parameters..."<<endl;
 
 //    cout << "secret: pol[0] = " << polynom[0] << '\n';
 
@@ -63,7 +63,7 @@ const ShamirSSScheme::BigNrVec& ShamirSSScheme::GetSecretParts()
 
 bool ShamirSSScheme::AccesSecret(const std::vector<UInt>& vPeople, const ShamirSSScheme::BigNrVec &vPeopleSecrets)
 {
-    cout << "Trying to acces the secret...\n";
+    //cout << "Trying to acces the secret...\n";
     UInt peopleNr = (UInt)vPeople.size();
     if (peopleNr != vPeopleSecrets.size())
     {
@@ -92,7 +92,7 @@ bool ShamirSSScheme::AccesSecret(const std::vector<UInt>& vPeople, const ShamirS
 //    cout << "Secret discovered: " << secret << '\n';
     if (secret == polynom[0])
     {
-        cout << "Secret Succefuly accesed"<<endl;
+        //cout << "Secret Succefuly accesed"<<endl;
         return true;
     }
     
